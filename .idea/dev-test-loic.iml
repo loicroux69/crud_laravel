@@ -28,9 +28,12 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/js-phpize/js-phpize" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/js-phpize/js-phpize-phug" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/js-transformer/js-transformer" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/krlove/code-generator" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/krlove/eloquent-model-generator" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/kylekatarnls/coffeescript" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/kylekatarnls/less.php" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/kylekatarnls/stylus" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/laracasts/generators" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/laravel/framework" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/laravel/tinker" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/league/flysystem" />
@@ -48,6 +51,7 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/nodejs-php-fallback/uglify" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/nunomaduro/collision" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/opis/closure" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/orangehill/iseed" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/paragonie/random_compat" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/phar-io/manifest" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/phar-io/version" />

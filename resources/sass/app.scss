@@ -2,7 +2,58 @@
 @import url('https://fonts.googleapis.com/css?family=Nunito');
 
 // Variables
-@import 'variables';
 
-// Bootstrap
-@import '~bootstrap/scss/bootstrap';
+@import 'variables';
+@import 'grid';
+
+// Bootstrap only what i need
+@import '~bootstrap/scss/functions',
+'~bootstrap/scss/variables',
+'~bootstrap/scss/mixins',
+'~bootstrap/scss/vendor/rfs',
+'~bootstrap/scss/root',
+'~bootstrap/scss/reboot',
+'~bootstrap/scss/nav',
+'~bootstrap/scss/navbar';
+
+@mixin dBlock(){
+    display:block ;
+}
+@mixin dNone(){
+    display:none;
+}
+@mixin dInBlock(){
+    display:inline-block;
+}
+.d-inline-block{
+    @include dInBlock;
+}
+.d-block{
+    @include dBlock;
+}
+.d-none{
+    @include dNone;
+}
+
+$point:calc(100vw/40);
+.point{
+    min-width:$point;
+    min-height:$point;
+    height:auto;
+    margin:0 1em;
+    position: relative;
+    @include dInBlock;
+    border-radius: 50%;
+    background-color:$cyan;
+    &::after{
+        content:"";
+        padding-top:100%;
+    }
+
+}
+
+
+.scale-high{
+    grid-row: 3/3;
+    grid-auto-rows:100%;
+}

@@ -11,6 +11,19 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//Route::get('/', function () {
+//    return view('welcome');
+//});
+//
+//Auth::routes();
+//
+//Route::get('/home', 'HomeController@index')->name('home');
+//
+//Auth::routes();
+//
+
+
+Route::get('/', 'ProfileController@show');
+
+Route::get('/crud', 'ProfileController@crud')->name('crud');
+
