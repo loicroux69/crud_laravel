@@ -23,7 +23,10 @@
 //
 
 
-Route::get('/', 'ProfileController@show');
+Route::get('/', 'ProfileController@show')->name('home');
 
 Route::get('/crud', 'ProfileController@crud')->name('crud');
+
+Route::get('/add', 'ProfileController@create')->name('add');
+
 

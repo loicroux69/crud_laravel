@@ -1,0 +1,10 @@
+@import 'app';
+@import '~bootstrap/scss/grid','~bootstrap/scss/buttons','~bootstrap/scss/forms','~bootstrap/scss/custom-forms';
+
+textarea.form-control{
+    height: 26vh;
+}
+
+.buttons{
+    padding:2em 0;
+}

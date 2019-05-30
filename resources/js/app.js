@@ -1,58 +1,39 @@
-/**
- * First we will load all of this project's JavaScript dependencies which
- * includes Vue and other libraries. It is a great starting point when
- * building robust, powerful web applications using Vue and Laravel.
- */
 
-//require('./bootstrap');
+//====================
+//j'aime beaucoup jQuery donc je fait comme si je l'utilisais (le Javascript c'est quand même beaucoup plus performant)
+//====================
+let saveHtml, toggledNode, toggledHtml;
 
-//window.Vue = require('vue');
+//rempli un tableau vide avec le contenu de mon noeud html
+[].slice.call(document.getElementsByClassName('col'), 0).forEach(function (e) {
 
-/**
- * The following block of code may be used to automatically register your
- * Vue components. It will recursively scan this directory for the Vue
- * components and automatically register them with their "basename".
- *
- * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
- */
+    //onclick evênement
+    e.addEventListener("click", function () {
+        //je récupère de la meilleure des manières le contenu des articles
+        let htmlContent = document.getElementsByClassName(`profile${this.dataset.profile}`)[0].getElementsByTagName('p')[0].textContent;
 
-// const files = require.context('./', true, /\.vue$/i);
-// files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
-
-//Vue.component('example-component', require('./components/ExampleComponent.vue').default);
-
-/**
- * Next, we will create a fresh Vue application instance and attach it to
- * the page. Then, you may begin adding components to this application
- * or customize the JavaScript scaffolding to fit your unique needs.
- */
-
-// const app = new Vue({
-//     el: '#app',
-// });
-let toggledNode;
-
-[].slice.call(document.getElementsByClassName('col'),0).forEach(function (e) {
-    e.addEventListener("click",function (ev) {
-        let htmlContent = document.getElementsByClassName(`profile${ev.target.dataset.profile}`)[0].innerHTML;
-
-        console.log(toggledNode);
-        if(toggledNode) {
-            if (this.isEqualNode(toggledNode) === false) {
+        //si je n'ai pas encore cliquer sur un profile
+        if (toggledNode) {
+            //si les deux profile sont différents j'affiche le contenu de leur article relié
+            if (this.dataset.profile !== toggledNode.dataset.profile) {
                 toggledNode.classList.toggle('scale-high');
                 this.classList.toggle('scale-high');
+
+                //on sauvegarde une valeur temporaire pour bien remettre le contenu du profile une fois qu'on clique sur un autre
+                toggledNode.innerHTML = saveHtml;
+                saveHtml = this.innerHTML;
+                this.innerHTML = htmlContent;
             }
-        }else{
+        } else {
             this.classList.add('scale-high');
+            saveHtml = this.innerHTML;
+            this.innerHTML = htmlContent;
         }
 
-        this.innerHTML = htmlContent;
-
-
-
-
-
-        //console.log(document.getElementsByClassName(`profile${ev.target.dataset.profile}`)[0].innerHTML);
+        //On sauvegarde le noeud dont on consulte la description du profile
         toggledNode = this;
     })
 }.bind(this));
+
+
+

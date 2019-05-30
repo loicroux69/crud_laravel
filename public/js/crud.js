@@ -81,84 +81,64 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 0);
+/******/ 	return __webpack_require__(__webpack_require__.s = 1);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ "./resources/js/app.js":
-/*!*****************************!*\
-  !*** ./resources/js/app.js ***!
-  \*****************************/
+/***/ "./resources/js/crud.js":
+/*!******************************!*\
+  !*** ./resources/js/crud.js ***!
+  \******************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-//====================
-//j'aime beaucoup jQuery donc je fait comme si je l'utilisais (le Javascript c'est quand même beaucoup plus performant)
-//====================
-var saveHtml, toggledNode, toggledHtml; //rempli un tableau vide avec le contenu de mon noeud html
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
 
-[].slice.call(document.getElementsByClassName('col'), 0).forEach(function (e) {
-  //onclick evênement
-  e.addEventListener("click", function () {
-    //je récupère de la meilleure des manières le contenu des articles
-    var htmlContent = document.getElementsByClassName("profile".concat(this.dataset.profile))[0].getElementsByTagName('p')[0].textContent; //si je n'ai pas encore cliquer sur un profile
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
 
-    if (toggledNode) {
-      //si les deux profile sont différents j'affiche le contenu de leur article relié
-      if (this.dataset.profile !== toggledNode.dataset.profile) {
-        toggledNode.classList.toggle('scale-high');
-        this.classList.toggle('scale-high'); //on sauvegarde une valeur temporaire pour bien remettre le contenu du profile une fois qu'on clique sur un autre
+function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
 
-        toggledNode.innerHTML = saveHtml;
-        saveHtml = this.innerHTML;
-        this.innerHTML = htmlContent;
-      }
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
+
+// ... concatene l'element de type HTMLDOMNode pour obtenir un tableau qu'on peut parcourir
+_toConsumableArray(document.getElementsByClassName('edit')).forEach(function (el) {
+  var toggled = false;
+  el.addEventListener("click", function (ev) {
+    var editMode = ev.target.parentElement.nextElementSibling;
+
+    if (toggled) {
+      ev.target.textContent = "Edit";
+      editMode.classList.toggle('d-none');
     } else {
-      this.classList.add('scale-high');
-      saveHtml = this.innerHTML;
-      this.innerHTML = htmlContent;
-    } //On sauvegarde le noeud dont on consulte la description du profile
+      ev.target.textContent = "Close edit mode";
+      editMode.classList.toggle('d-none');
+    }
+
+    toggled = !toggled;
+  });
+}); //file name show
 
 
-    toggledNode = this;
+_toConsumableArray(document.getElementsByClassName("custom-file-input")).forEach(function (el) {
+  el.addEventListener("change", function (el) {
+    var fileName = this.value.split("\\").pop();
+    var modify = this.nextElementSibling;
+    modify.classList.add('selected');
+    modify.innerHTML = fileName;
   });
 }.bind(this));
 
 /***/ }),
 
-/***/ "./resources/sass/app.scss":
-/*!*********************************!*\
-  !*** ./resources/sass/app.scss ***!
-  \*********************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-
-/***/ "./resources/sass/crud.scss":
-/*!**********************************!*\
-  !*** ./resources/sass/crud.scss ***!
-  \**********************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-
-/***/ 0:
-/*!****************************************************************************************!*\
-  !*** multi ./resources/js/app.js ./resources/sass/app.scss ./resources/sass/crud.scss ***!
-  \****************************************************************************************/
+/***/ 1:
+/*!************************************!*\
+  !*** multi ./resources/js/crud.js ***!
+  \************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/loic/Desktop/test_dev_web_loic/dev-test-loic/resources/js/app.js */"./resources/js/app.js");
-__webpack_require__(/*! /Users/loic/Desktop/test_dev_web_loic/dev-test-loic/resources/sass/app.scss */"./resources/sass/app.scss");
-module.exports = __webpack_require__(/*! /Users/loic/Desktop/test_dev_web_loic/dev-test-loic/resources/sass/crud.scss */"./resources/sass/crud.scss");
+module.exports = __webpack_require__(/*! /Users/loic/Desktop/test_dev_web_loic/dev-test-loic/resources/js/crud.js */"./resources/js/crud.js");
 
 
 /***/ })

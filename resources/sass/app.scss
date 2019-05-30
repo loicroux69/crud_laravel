@@ -4,7 +4,7 @@
 // Variables
 
 @import 'variables';
-@import 'grid';
+
 
 // Bootstrap only what i need
 @import '~bootstrap/scss/functions',
@@ -25,35 +25,22 @@
 @mixin dInBlock(){
     display:inline-block;
 }
+@mixin dFlex(){
+    display:flex;
+}
 .d-inline-block{
     @include dInBlock;
 }
 .d-block{
     @include dBlock;
 }
+.d-flex{
+    @include dFlex;
+}
 .d-none{
     @include dNone;
 }
 
-$point:calc(100vw/40);
-.point{
-    min-width:$point;
-    min-height:$point;
-    height:auto;
-    margin:0 1em;
-    position: relative;
-    @include dInBlock;
-    border-radius: 50%;
-    background-color:$cyan;
-    &::after{
-        content:"";
-        padding-top:100%;
-    }
-
-}
 
 
-.scale-high{
-    grid-row: 3/3;
-    grid-auto-rows:100%;
-}
+@import 'grid';

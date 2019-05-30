@@ -24,7 +24,7 @@ class ProfileController extends Controller
      */
     public function create()
     {
-        //
+        return view('add',['js'=>false]);
     }
 
     /**
@@ -46,7 +46,7 @@ class ProfileController extends Controller
      */
     public function show(Profile $profile)
     {
-        return view('profiles', ['profiles' => Profile::all()]);
+        return view('profiles', ['profiles' => Profile::all(),'js'=>true]);
     }
 
     /**
@@ -92,6 +92,6 @@ class ProfileController extends Controller
      */
     public function crud(Profile $profile)
     {
-        return view('crud', ['profiles' => Profile::all()]);
+        return view('crud', ['profiles' => Profile::all(),'js'=>false]);
     }
 }
