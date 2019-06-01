@@ -3,17 +3,26 @@
 
 
 @section('content')
-    <form method="post" action="{{url('store')}}" enctype="multipart/form-data">
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div><br />
+    @endif
+    <form method="post" action="{{route('store')}}" enctype="multipart/form-data">
         @csrf
         <div class="row">
             <div class="form-group col-sm-6">
-                <label for="fist_name">Fisrt Name</label>
-                <input class="form-control" type="text" name="fist_name">
+                <label for="first_name">Fisrt Name</label>
+                <input class="form-control" type="text" name="first_name" id="first_name">
             </div>
 
             <div class="form-group col-sm-6">
                 <label for="last_name">Last Name</label>
-                <input class="form-control" type="text" name="last_name">
+                <input class="form-control" type="text" name="last_name" id="last_name">
             </div>
         </div>
         <div class="row">
@@ -22,11 +31,11 @@
                 <textarea class="form-control" name="description"></textarea>
             </div>
 
-            <div class="form-group custom-file col-md-5" style="margin-top: 30px">
-                <input class="custom-file-input" type="file"
+            <div class="form-group  col-md-5">
+                <label for="image">Image link</label>
+                <input class="form-control" type="text"
                        name="image" >
-                <label class="custom-file-label" for="customFile">Choose
-                    image</label>
+
             </div>
         </div>
             <div style="width:100%;margin-top:60px;text-align: center;">

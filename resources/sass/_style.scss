@@ -1,0 +1,152 @@
+@import url('https://fonts.googleapis.com/css?family=Merriweather&display=swap');
+
+
+svg.circle {
+    transition: none;
+    position: fixed;
+    z-index: 99;
+    width: 100%;
+    height: 100%;
+    top: 0;
+
+    circle {
+        fill: rgb(23, 36, 57);
+        width: 5em;
+        height: 5em;
+        animation-delay: 0s;
+        animation-duration: .9s;
+        animation-name: scaleRound;
+        animation-iteration-count: 1;
+        animation-direction: normal;
+        animation-fill-mode: forwards;
+        animation-timing-function: $mybezier;
+    }
+
+}
+
+@keyframes scaleRound {
+    0% {
+        opacity: .2;
+        r: 10;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        r: calc(100vw + 100vh );
+    }
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+@keyframes fadeOutCircle {
+
+    100% {
+        display: none;
+    }
+}
+
+.arrow-return {
+    position: fixed;
+    cursor:pointer;
+    z-index: 102;
+    top:5%;
+    right:8%;
+    height: 40px;
+    width: 40px;
+    background-size: cover;
+    background-clip: border-box;
+    background-position: center;
+    background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB2ZXJzaW9uPSIxLjEiIGlkPSJDYXBhXzEiIHg9IjBweCIgeT0iMHB4IiB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgdmlld0JveD0iMCAwIDI2OC44MzIgMjY4LjgzMiIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgMjY4LjgzMiAyNjguODMyOyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+PGc+PGc+Cgk8cGF0aCBkPSJNMjY1LjE3MSwxMjUuNTc3bC04MC04MGMtNC44ODEtNC44ODEtMTIuNzk3LTQuODgxLTE3LjY3OCwwYy00Ljg4Miw0Ljg4Mi00Ljg4MiwxMi43OTYsMCwxNy42NzhsNTguNjYxLDU4LjY2MUgxMi41ICAgYy02LjkwMywwLTEyLjUsNS41OTctMTIuNSwxMi41YzAsNi45MDIsNS41OTcsMTIuNSwxMi41LDEyLjVoMjEzLjY1NGwtNTguNjU5LDU4LjY2MWMtNC44ODIsNC44ODItNC44ODIsMTIuNzk2LDAsMTcuNjc4ICAgYzIuNDQsMi40MzksNS42NCwzLjY2MSw4LjgzOSwzLjY2MXM2LjM5OC0xLjIyMiw4LjgzOS0zLjY2MWw3OS45OTgtODBDMjcwLjA1MywxMzguMzczLDI3MC4wNTMsMTMwLjQ1OSwyNjUuMTcxLDEyNS41Nzd6IiBkYXRhLW9yaWdpbmFsPSIjMDAwMDAwIiBjbGFzcz0iYWN0aXZlLXBhdGgiIHN0eWxlPSJmaWxsOiNGRkZGRkYiIGRhdGEtb2xkX2NvbG9yPSIjRENCN0I3Ij48L3BhdGg+CjwvZz48L2c+IDwvc3ZnPg==);
+    opacity:0;
+    display: none;
+}
+
+.slide-arrow{
+    animation-delay: 0s;
+    animation-duration: .5s;
+    animation-name: slideArrow;
+    animation-iteration-count: 1;
+    animation-direction: normal;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-out;
+    display: block;
+}
+
+@keyframes slideArrow {
+    0% {
+        opacity: .2;
+    }
+
+    100% {
+        opacity: 1;
+        right:5%;
+    }
+}
+
+
+.content-clicked{
+    font-size: 1rem;
+}
+
+@include media-breakpoint-up(sm) {
+    .content-clicked {
+        font-size: 1.1rem;
+    }
+}
+
+@include media-breakpoint-up(md) {
+    .content-clicked {
+        font-size: 1.2rem;
+    }
+}
+
+@include media-breakpoint-up(lg) {
+    .content-clicked {
+        font-size: 1.3rem;
+    }
+}
+
+.content-clicked{
+    color:#fff;
+    font-family: Merriweather;
+    line-height: 40px;
+    z-index:101;
+    position:fixed;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    transition:opacity 0.5s $mybezier;
+    opacity: 1;
+    width: 90%;
+    height:99vh;
+    overflow-y: scroll;
+
+    &::-webkit-scrollbar{
+        display: none;
+    }
+
+    &.d-none{
+        opacity: 0;
+        top:80%;
+    }
+    @media (min-width: 576px){
+        width:80%;
+        height:auto;
+    }
+    @media (min-width:768px){
+        width:65%;
+        height:auto;
+    }
+    @media (min-width: 1200px){
+        width:58%;
+        height:auto;
+    }
+}

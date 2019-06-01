@@ -1,6 +1,6 @@
 
 
-// ... concatene l'element de type HTMLDOMNode pour obtenir un tableau qu'on peut parcourir
+// ... concatene l'element de type HTMLDOMNode pour obtenir un tableau qu'on peut parcourir avec for
 [...document.getElementsByClassName('edit')].forEach(function (el) {
     let toggled = false;
 
@@ -20,14 +20,12 @@
 });
 
 
-//file name show
-
-[...document.getElementsByClassName("custom-file-input")].forEach(function (el) {
-
-    el.addEventListener("change", function (el) {
-        var fileName = this.value.split("\\").pop();
-        let modify = this.nextElementSibling;
-        modify.classList.add('selected')
-        modify.innerHTML = fileName;
-    })
-}.bind(this));
+//On fait disparaitre l'alerte apres 1seconde
+if (document.getElementsByClassName('alert').length > 0) {
+    setTimeout(function () {
+        Object.assign(document.getElementsByClassName('alert')[0].style, {
+            display: 'none',
+            opacity: 0
+        });
+    }, 1000);
+}

@@ -3,25 +3,26 @@
 
 @section('content')
 
-    <div class="row">
+    <div class="row-grid">
         @foreach ($profiles as $profile)
-            <div class="col" data-profile="{{$profile->id}}">
+            <div class="box" data-profile="{{$profile->id}}">
                 <h1>{{ $profile->first_name .' '. $profile->last_name  }}</h1>
                 <div class="wrapper-img"><img src="{{ $profile->image }}"/>
                 </div>
             </div>
+            <div class="articles d-none">
+
+
+                <article class="art-profile d-none profile{{$profile->id}}">
+                    <p>{{ $profile->description }}</p>
+                </article>
+            </div>
         @endforeach
     </div>
+    <span class="arrow-return"></span>
+    <article class="content-clicked container d-none">
+        <p></p>
+    </article>
 
-    <div class="articles">
-        {{--c'est pas vraiment la meilleure solution de faire deux boucles php
-        mais bon... j'ai pas le temps--}}
 
-
-        @foreach ($profiles as $profile)
-            <article class="art-profile d-none profile{{$profile->id}}">
-                <p>{{ $profile->description }}</p>
-            </article>
-        @endforeach
-    </div>
 @endsection

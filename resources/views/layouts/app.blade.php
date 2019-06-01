@@ -10,10 +10,7 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
 
-
-
-
-<!-- Fonts -->
+    <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito"
           rel="stylesheet">
@@ -25,6 +22,17 @@
     @endif
 </head>
 <body>
+
+@if(session()->get('success'))
+    <div class="alert alert-success">
+        {{ session()->get('success') }}
+    </div><br/>
+@elseif(session()->get('error'))
+    <div class="alert alert-danger">
+        {{ session()->get('error') }}
+    </div><br/>
+@endif
+
 <div id="app">
     <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
         <div class="container">
@@ -35,12 +43,11 @@
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
-
                 <ul class="navbar-nav ml-auto">
 
                     <li class="nav-item">
                         <!--next route for crud app-->
-                        <a class="nav-link {{Request::is('home') ? 'active' : ''}}"
+                        <a class="nav-link {{Request::is('/') ? 'active' : ''}}"
                            href="{{ url('/')  }}">{{ __('Home') }}</a>
                     </li>
                     <li class="nav-item">
@@ -53,13 +60,12 @@
                         <a class="nav-link {{Request::is('add') ? 'active' : ''}}"
                            href="{{ route('add') }}">{{ __('Add') }}</a>
                     </li>
-
                 </ul>
             </div>
         </div>
     </nav>
 
-    <main class="py-4">
+    <main>
         <section class="container">
             @yield('content')
         </section>
@@ -71,7 +77,6 @@
 <!-- Scripts -->
 @if($js)
     <script src="{{ asset('js/app.js') }}" defer></script>
-
 @else
     <script src="{{ asset('js/crud.js') }}" defer></script>
 

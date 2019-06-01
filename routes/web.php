@@ -23,10 +23,19 @@
 //
 
 
-Route::get('/', 'ProfileController@show')->name('home');
+Route::get('/', 'ProfileController@index')->name('home');
 
 Route::get('/crud', 'ProfileController@crud')->name('crud');
 
 Route::get('/add', 'ProfileController@create')->name('add');
+
+Route::post('/store', 'ProfileController@store')->name('store');
+
+Route::get('/crud/delete/{profile}', 'ProfileController@destroy')->name('destroy');
+
+Route::patch('/crud/edit/{profile}', 'ProfileController@edit')->name('edit');
+
+
+
 
 

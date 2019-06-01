@@ -101,7 +101,7 @@ function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.
 
 function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
 
-// ... concatene l'element de type HTMLDOMNode pour obtenir un tableau qu'on peut parcourir
+// ... concatene l'element de type HTMLDOMNode pour obtenir un tableau qu'on peut parcourir avec for
 _toConsumableArray(document.getElementsByClassName('edit')).forEach(function (el) {
   var toggled = false;
   el.addEventListener("click", function (ev) {
@@ -117,17 +117,17 @@ _toConsumableArray(document.getElementsByClassName('edit')).forEach(function (el
 
     toggled = !toggled;
   });
-}); //file name show
+}); //On fait disparaitre l'alerte apres 1seconde
 
 
-_toConsumableArray(document.getElementsByClassName("custom-file-input")).forEach(function (el) {
-  el.addEventListener("change", function (el) {
-    var fileName = this.value.split("\\").pop();
-    var modify = this.nextElementSibling;
-    modify.classList.add('selected');
-    modify.innerHTML = fileName;
-  });
-}.bind(this));
+if (document.getElementsByClassName('alert').length > 0) {
+  setTimeout(function () {
+    Object.assign(document.getElementsByClassName('alert')[0].style, {
+      display: 'none',
+      opacity: 0
+    });
+  }, 1000);
+}
 
 /***/ }),
 

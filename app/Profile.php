@@ -6,8 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Profile extends Model
 {
-    //Ajouter automatiquement
-    protected $fillable = [
-        'name', 'slug',
-    ];
+    protected $table='profiles';
+    
+    protected $fillable = ['first_name', 'last_name', 'description','image'];
+    
+    public $timestamps = false;
+
+
+    
 }

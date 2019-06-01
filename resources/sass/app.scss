@@ -5,7 +5,6 @@
 
 @import 'variables';
 
-
 // Bootstrap only what i need
 @import '~bootstrap/scss/functions',
 '~bootstrap/scss/variables',
@@ -14,7 +13,8 @@
 '~bootstrap/scss/root',
 '~bootstrap/scss/reboot',
 '~bootstrap/scss/nav',
-'~bootstrap/scss/navbar';
+'~bootstrap/scss/navbar',
+'~bootstrap/scss/alert';
 
 @mixin dBlock(){
     display:block ;
@@ -41,6 +41,10 @@
     @include dNone;
 }
 
+.navbar-collapse{
+    padding-top: .1em;
+}
 
 
+@import 'style';
 @import 'grid';

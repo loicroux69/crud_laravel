@@ -1,51 +1,55 @@
 @extends('layouts.app')
 
-
-
 @section('content')
     <div class="row-crud">
         @foreach ($profiles as $profile)
-            <div class="crud-col d-flex">
-                <div class="col" data-profile="{{$profile->id}}">
+            <div class="row">
+                <div class="col-md-3" data-profile="{{$profile->id}}">
                     <h1>{{ $profile->first_name .' '. $profile->last_name  }}</h1>
                     <div class="wrapper-img"><img src="{{ $profile->image }}"/>
                     </div>
                 </div>
-                <p class="desc">
+                <p class="desc col-md">
                     {{ $profile->description }}
                 </p>
 
             </div>
-            <div class="buttons">
+            <div class="buttons d-flex">
                 <button class="btn btn-light edit">Edit</button>
-                <button class="btn btn-danger del">Delete</button>
-            </div>
-            <form class="d-none" method="post" action="{{url('edit')}}"
-                  enctype="multipart/form-data">
+                <form action="{{ route('destroy', $profile->id)}}" methods="post">
+                    @method('DELETE')
+                    @csrf
 
-                <div class="row" data-profile="{{$profile->id}}">
+                    <button class="btn btn-danger del" type="submit">Delete</button>
+                </form>
+            </div>
+            <form class="d-none" method="post" action="{{route('edit', $profile->id)}}"
+                  enctype="multipart/form-data">
+                @method('PATCH')
+                @csrf
+
+                <div class="row" >
                     <div class="form-group col-md-6">
-                        <input type="text" class="form-control" name="fist_name"
+                        <input type="text" name="first_name" class="form-control"
                                placeholder="Fisrt Name"
                                value="{{$profile->first_name}}">
                     </div>
 
                     <div class="form-group col-md-6">
-                        <input type="text" class="form-control"
+                        <input type="text" name="last_name" class="form-control"
                                placeholder="Last Name"
-                               name="last_name"
+
                                value="{{ $profile->last_name }}">
                     </div>
                 </div>
 
                 <div class="crud-col row">
-                    {{--@csrf--}}
                     <div class="wrapper-img col-md-4">
-                        <div class="form-group custom-file">
-                            <input class="custom-file-input" type="file"
-                                   name="image">
-                            <label class="custom-file-label" for="customFile">Choose
-                                image</label>
+                        <div class="form-group">
+                            <input type="text" class="form-control"
+                                   placeholder="Last Name"
+                                   name="image"
+                                   value="{{ $profile->image }}">
                         </div>
                     </div>
                     <div class="desc form-group col-md-8">
